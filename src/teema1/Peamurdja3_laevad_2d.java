@@ -18,29 +18,40 @@ import java.util.Scanner;
 
 
 
-public class Peamurdja3_laevad {
+public class Peamurdja3_laevad_2d {
 
     public static void main(String[] args) {
-        int[] laud = new int[8];
+        int suurus = 4;
+        int[][] laud = new int[suurus][suurus];
         int i;
-        for (i = 0; i < (laud.length); i++) {
-            laud[i] = (int) (Math.random() * 2);
-        }
-        System.out.println(Arrays.toString(laud));
-        Scanner kasutaja = new Scanner(System.in);
-        for (i = 0; i < (laud.length); i++) {
-            if (laud[i] == 1) {
-                System.out.println("Sisesta number ühest kaheksani");
-                int sisestus = kasutaja.nextInt() - 1;
-                if (laud[sisestus] == 1) {
-                    System.out.println("Pihtas!");
-                    laud[sisestus] = 0;
-                }
-                else {
-                    System.out.println("Mööda!");
-                }
-
+        int j;
+        for (i = 0; i < suurus; i++) {
+            for (j = 0; j < suurus; j++) {
+                laud[i][j] = (int) (Math.random() * 2);
             }
+        }
+        //System.out.println(Arrays.deepToString(laud));
+        //System.out.println(laud.length);
+        System.out.println(Arrays.deepToString(laud).replaceAll("],", "]," + System.getProperty("line.separator")));
+        Scanner kasutaja = new Scanner(System.in);
+        for (i = 0; i < suurus; i++) {
+            for (j = 0; j < suurus; j++) {
+                if (laud[i][j] == 1) {
+                    System.out.println("Sisesta rea number");
+                    int x = kasutaja.nextInt() - 1;
+                    System.out.println("Sisesta veeru number");
+                    int y = kasutaja.nextInt() - 1;
+                    if (laud[x][y] == 1) {
+                        System.out.println("Pihtas!");
+                        laud[x][y] = 0;
+                    }
+                    else {
+                        System.out.println("Mööda!");
+                    }
+
+                }
+            }
+
 
             /* int Math.random(laud[1]) * 2;
             System.out.println(laud [4]);
