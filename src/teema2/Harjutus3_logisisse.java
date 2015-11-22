@@ -11,8 +11,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.Scanner;
-
 /**
  * 1. Loo sisse logimise ekraan (ainult visuaal)
  * 2. Määra üks võimalik kasutaja ja parool (andmebaasi veel ei kasuta)
@@ -23,28 +21,28 @@ public class Harjutus3_logisisse extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         VBox vbox = new VBox();
-        Scene stseen = new Scene(vbox);
-        primaryStage.setScene(stseen);
+        Scene loginScene = new Scene(vbox);
+        primaryStage.setScene(loginScene);
         primaryStage.show();
 
-        Label kasutajaLabel = new Label("Kasutajanimi");
-        TextField kasutajainput = new TextField();
-        vbox.getChildren().addAll(kasutajaLabel, kasutajainput);
+        Label kasutajaLabel = new Label("Kasutaja");
+        TextField kasutajaInput = new TextField();
+        Label parooliLabel = new Label("Parool");
+        PasswordField paroolInput = new PasswordField();
+        Button loginNupp = new Button("Logi sisse");
 
-        Label salasonaLabel = new Label("Salasõna");
-        PasswordField salasonainput = new PasswordField();
-        vbox.getChildren().addAll(salasonaLabel, salasonainput);
+        Label teade = new Label();
 
-        Button btn = new Button("Logi sisse");
-        btn.setOnAction(event -> {
-            String kasutajaSisu = kasutajainput.getText();
-            String kasutajaSisu = salasonainput.getText();
+        vbox.getChildren().addAll(kasutajaLabel, kasutajaInput, parooliLabel, paroolInput, loginNupp, teade);
 
-
-
+        loginNupp.setOnAction(event -> {
+            String kasutaja = kasutajaInput.getText();
+            String parool = paroolInput.getText();
+            if (kasutaja.equals("Krister") && parool.equals("täiegasalajane")) {
+                System.out.println("SAID SISSE!");
+            } else {
+                teade.setText("Vale parool/kasutaja");
+            }
         });
-        vbox.getChildren().addAll(btn);
-
-
     }
 }

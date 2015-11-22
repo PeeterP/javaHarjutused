@@ -1,10 +1,12 @@
+
 package teema2;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Loo laevade pommitamine, kus on vaid 1x1 laevad ja kasutaja saab arvuti laevasid pommitada 9x9 maatriksil.
+ * Loo laevade pommitamine, kus on vaid 1x1
+ * laevad ja kasutaja saab arvuti laevasid pommitada 9x9 maatriksil.
  */
 public class Kordamine1_laevad_maatriksil {
     static int[][] laud;
@@ -14,10 +16,10 @@ public class Kordamine1_laevad_maatriksil {
     public static void main(String[] args) {
         genereeriLaud();
         laevadeGenereerimine();
-        int[] xy = küsiPommiAsukohta();
+        int[] xy = kysiPommiseAsukohta();
         kontrolliTabamust(xy);
-//        kasOnVeelAllesLaevu();
-//        gameover();
+        // kasOnVeelAllesLaevu();
+        // gameover();
     }
 
     private static void kontrolliTabamust(int[] xy) {
@@ -25,27 +27,26 @@ public class Kordamine1_laevad_maatriksil {
         int y = xy[1];
         int sihtpunkt = laud[y][x];
         if (sihtpunkt == 1) {
-            System.out.println("Pihtas!");
+            System.out.println("PIHTAS!");
             laud[y][x] = 2;
         } else if (sihtpunkt == 0) {
-            System.out.println("Mööda!");
+            System.out.println("M66da");
         }
     }
 
-    private static int[] küsiPommiAsukohta() {
+    private static int[] kysiPommiseAsukohta() {
         try {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Ütle veeru number");
+            System.out.println("�tle rea number");
             int x = sc.nextInt() - 1;
-            System.out.println("Ütle rea number");
+            System.out.println("�tle veeru number");
             int y = sc.nextInt() - 1;
             int[] xy = {x, y};
             return xy;
         } catch (Exception e) {
-            System.out.println("Kirjuta number");
+            System.out.println("Ou kirjuta ikka number!");
         }
-        return küsiPommiAsukohta();
-
+        return kysiPommiseAsukohta();
     }
 
     private static void laevadeGenereerimine() {
@@ -59,5 +60,6 @@ public class Kordamine1_laevad_maatriksil {
 
     private static void genereeriLaud() {
         laud = new int[lauaKorgus][lauaLaius];
+
     }
 }
